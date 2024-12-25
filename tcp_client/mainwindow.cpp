@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->setWindowTitle("TCP client");
     socket = new QTcpSocket(this);
     sendTimer = new QTimer(this);
     testArray = new QByteArray ;
@@ -55,7 +56,7 @@ void MainWindow::on_connectButton_clicked()
         timerConnect.start();
         socket->connectToHost(serverIP,serverPort);
         if(socket->waitForConnected(500)) {
-            sendMessageToBox("TCP Connected in "+ "QString::number(timerConnect.elapsed())" + " ms ");
+            sendMessageToBox("TCP Connected in" + QString::number(timerConnect.elapsed()) + " ms ");
         } else {
             sendMessageToBox("Error TCP connection,time out "+ QString::number(timerConnect.elapsed()) + " ms ");
         }

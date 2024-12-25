@@ -46,7 +46,6 @@ private:
     QString serverIP = "192.168.2.92";
     qint16 serverPort = 2323;
 
-
 public slots:
 
 
