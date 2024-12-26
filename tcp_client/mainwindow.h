@@ -47,7 +47,7 @@ private:
     int16_t thirdInArray = 333;
     QString serverIP = "192.168.2.92";
     qint16 serverPort = 2323;
-    int16_t sizeInt16Array= 4;
+    int32_t sizeIntArray= 4;
 
 public slots:
 };

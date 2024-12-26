@@ -11,7 +11,6 @@ public:
     server();
     QTcpSocket *socket;
 private:
-    QVector <QTcpSocket*> Sockets;
     QByteArray Data;
     void SendToClient(QString str);
 public slots:

@@ -64,7 +64,7 @@ void MainWindow::on_connectButton_clicked()
 
 void MainWindow::on_sendButton_clicked()
 {
-    int16_t array[sizeInt16Array] ;
+    int16_t array[sizeIntArray] ;
     array[0] = zeroInArray ;
     array[1] = firstInArray ;
     array[2] = secondInArray ;
@@ -103,7 +103,7 @@ void MainWindow::on_disconectedButton_clicked()
 
 void MainWindow::on_int16_size_array_valueChanged(int arg1)
 {
-    sizeInt16Array = arg1;
+    sizeIntArray = arg1;
 }
 
 void MainWindow::on_spinBox_Array_0_valueChanged(int arg1)
