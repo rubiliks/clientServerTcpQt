@@ -90,17 +90,93 @@
      </layout>
     </item>
     <item row="5" column="0">
-     <spacer name="verticalSpacer">
-      <property name="orientation">
-       <enum>Qt::Orientation::Vertical</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>40</height>
-       </size>
-      </property>
-     </spacer>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="2" column="0">
+       <widget class="QSpinBox" name="int16_size_array">
+        <property name="minimum">
+         <number>4</number>
+        </property>
+        <property name="maximum">
+         <number>999999</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Size of array int16</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QSpinBox" name="spinBox_Array_0">
+        <property name="maximum">
+         <number>99999</number>
+        </property>
+        <property name="value">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLabel" name="label_Array_1">
+        <property name="text">
+         <string>Value Array[1]</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QSpinBox" name="spinBox_Array_1">
+        <property name="maximum">
+         <number>99999</number>
+        </property>
+        <property name="value">
+         <number>111</number>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QLabel" name="label_Array_2">
+        <property name="text">
+         <string>Value Array[2]</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_Array_0">
+        <property name="text">
+         <string>Value Array[0]</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="QLabel" name="label_Array_3">
+        <property name="text">
+         <string>Value Array[3]</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2">
+       <widget class="QSpinBox" name="spinBox_Array_2">
+        <property name="maximum">
+         <number>99999</number>
+        </property>
+        <property name="value">
+         <number>222</number>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="3">
+       <widget class="QSpinBox" name="spinBox_Array_3">
+        <property name="maximum">
+         <number>99999</number>
+        </property>
+        <property name="value">
+         <number>333</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
     <item row="6" column="0">
      <widget class="QPushButton" name="sendButton">

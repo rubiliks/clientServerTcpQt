@@ -8,11 +8,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     this->setWindowTitle("TCP client");
     socket = new QTcpSocket(this);
-    sendTimer = new QTimer(this);
-    testArray = new QByteArray ;
-    connect(sendTimer,SIGNAL(timeout()),this,SLOT(sendlerMessageFromTimer()));
+    sendArray = new QByteArray ;
     connect(socket,&QTcpSocket::disconnected,this,&MainWindow::sendlerMessageDisconnect);
-    sendTimer->start(1);
 }
 
 MainWindow::~MainWindow()
@@ -21,8 +18,7 @@ MainWindow::~MainWindow()
     socket->disconnectFromHost();
     delete ui;
     delete socket;
-    delete sendTimer;
-    delete testArray;
+    delete sendArray;
 }
 
 void MainWindow::sentToServer(QByteArray dataArray)
@@ -47,7 +43,6 @@ void MainWindow::sendMessageToBox(QString messageToBox)
     qDebug()<<messageToBox;
 }
 
-
 void MainWindow::on_connectButton_clicked()
 {
     if(socket->state() != QTcpSocket::ConnectedState)
@@ -56,7 +51,7 @@ void MainWindow::on_connectButton_clicked()
         timerConnect.start();
         socket->connectToHost(serverIP,serverPort);
         if(socket->waitForConnected(500)) {
-            sendMessageToBox("TCP Connected in" + QString::number(timerConnect.elapsed()) + " ms ");
+            sendMessageToBox("TCP Connected in " + QString::number(timerConnect.elapsed()) + " ms ");
         } else {
             sendMessageToBox("Error TCP connection,time out "+ QString::number(timerConnect.elapsed()) + " ms ");
         }
@@ -69,16 +64,14 @@ void MainWindow::on_connectButton_clicked()
 
 void MainWindow::on_sendButton_clicked()
 {
-    int16_t array[197120] ;
-    array[0] = 000 ;
-    array[1] = 111 ;
-    array[2] = 222 ;
-    array[3] = 333 ;
-    array[4] = 1488 ;
-
-    testArray->resize(sizeof(array));
-    memcpy(testArray->data(), array, sizeof(array));
-    sentToServer(*testArray);
+    int16_t array[sizeInt16Array] ;
+    array[0] = zeroInArray ;
+    array[1] = firstInArray ;
+    array[2] = secondInArray ;
+    array[3] = thirdInArray ;
+    sendArray->resize(sizeof(array));
+    memcpy(sendArray->data(), array, sizeof(array));
+    sentToServer(*sendArray);
 }
 
 void MainWindow::sendlerMessageDisconnect()
@@ -86,17 +79,11 @@ void MainWindow::sendlerMessageDisconnect()
     sendMessageToBox(" Server close TCP socket! ");
 }
 
-void MainWindow::sendlerMessageFromTimer()
-{
-
-}
-
 
 void MainWindow::on_lineEdit_textChanged(const QString &arg1)
 {
     serverIP = arg1;
 }
-
 
 void MainWindow::on_spinBoxPort_valueChanged(int arg1)
 {
@@ -114,3 +101,27 @@ void MainWindow::on_disconectedButton_clicked()
     }
 }
 
+void MainWindow::on_int16_size_array_valueChanged(int arg1)
+{
+    sizeInt16Array = arg1;
+}
+
+void MainWindow::on_spinBox_Array_0_valueChanged(int arg1)
+{
+    zeroInArray = arg1;
+}
+
+void MainWindow::on_spinBox_Array_1_valueChanged(int arg1)
+{
+    firstInArray = arg1;
+}
+
+void MainWindow::on_spinBox_Array_2_valueChanged(int arg1)
+{
+    secondInArray = arg1;
+}
+
+void MainWindow::on_spinBox_Array_3_valueChanged(int arg1)
+{
+    thirdInArray = arg1;
+}
